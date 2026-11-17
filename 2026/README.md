@@ -43,8 +43,9 @@ You can find details about the datasets (descriptions, tutorials, etc.) and list
 Each project has a folder under [team-projects](team-projects/) with a pre-filled `README.md`. To complete yours:
 
 1. Edit the `README.md` in your project folder and fill in each section (200–400 words in total for all sections is fine). The comments in the file explain what goes where.
-2. Add one key figure or screenshot to the same folder and reference it from the write-up.
-3. Open a pull request. If you prefer not to use GitHub, send the text and figure to the organizers and we will add them for you.
+2. Add one key figure or screenshot to the same folder and reference it from the write-up. If you want to include your presentation, add it as a PDF (not PowerPoint).
+3. Keep files small, since everything committed stays in the repository's history: images should be at most about 1200 px wide and under 500 KB (PNG for plots, JPEG for photos), PDFs should ideally be under 2 MB and at most 5 MB (use your tool's "reduce file size" or "minimum size" export option), and link to large files (datasets, notebooks with big outputs, videos) instead of committing them.
+4. Open a pull request. If you prefer not to use GitHub, send the text and figure to the organizers and we will add them for you.
 
 If your project is not listed, copy [team-projects/TEMPLATE.md](team-projects/TEMPLATE.md) into a new folder as `README.md`.
 
