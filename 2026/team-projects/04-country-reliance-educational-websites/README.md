@@ -1,25 +1,46 @@
 # How countries rely on other countries’ Internet (educational websites)
 
-Could students still reach their learning platforms if their country lost international connectivity? We traced the infrastructure behind 400 country–hostname pairs in a national education platform inventory. For Austria’s digital library, digi4school.at, the observed website addresses mapped to Austria, while its authoritative DNS server addresses mapped to Germany.
+## Team
+
+- Zuyao Xu, Nankai University
+
+**Contact:** [xuzuyao@mail.nankai.edu.cn](mailto:xuzuyao@mail.nankai.edu.cn) · [@TochusC](https://github.com/TochusC)
+
+## TL;DR
+
+We studied where educational websites and their authoritative DNS servers are hosted across 400 country–hostname pairs. We found that a website hosted domestically can rely on DNS infrastructure abroad.
+
+## Problem
+
+If a country loses international connectivity, can students still reach its educational websites? Even when a website has a domestic address, students need a way to look up that address. We examined where both parts of this lookup were located.
 
 ## What we did
 
-We grouped entries from the Giga / EdTech Hub inventory by country and hostname so that several education pages on one government portal counted once. Using the Internet Yellow Pages (IYP) and the linked Cypher queries, we joined hostnames to website and nameserver addresses. OpenINTEL supplied DNS relationships. IPinfo and AWS supplied location evidence, and bgp.tools and LACeS supplied anycast evidence. We retained uncertain locations and missing addresses in the results.
+We grouped entries in the Giga / EdTech Hub inventory by country and hostname so that multiple pages on the same national portal counted once. We used the Internet Yellow Pages (IYP) to look up website and authoritative nameserver addresses and map them to countries. We also checked existing OONI measurements for 30 selected country–hostname pairs.
 
-## What we found
+## Outcomes
 
-Of the 400 pairs, 116 had website addresses that mapped exclusively to the service country. Within those 116, observed authoritative DNS addresses mapped domestically for 71, abroad for one, and both domestically and abroad for eight. For the remaining 36, the evidence was uncertain or missing.
+Of the 400 pairs, 116 had website addresses that all mapped to the service country. Among those 116, authoritative DNS addresses mapped only to the same country for 71, only abroad for one, and to both domestic and foreign locations for eight. For the remaining 36, DNS location evidence was uncertain or missing.
+
+The Austrian digital library *digi4school.at* was the one case with domestic website addresses and exclusively foreign DNS addresses. Its observed website addresses mapped to Austria, while its authoritative nameserver addresses mapped to Germany.
 
 ![Website and authoritative DNS address locations for all 400 country–hostname pairs](dns-locality.png)
 
-We also checked existing OONI Web Connectivity observations for 30 selected country–hostname pairs. Four had observations for the same hostname. None matched the exact education URL in the inventory.
+## Datasets and tools used
 
-## Status and next steps
-
-The analysis of existing measurements is complete. Whether a student can still use a platform during an outage remains open. A follow-up could test whether domestic resolvers can refresh expired DNS records and whether students can complete a learning activity from different domestic networks.
-
-[Presentation and dataset credits (PDF)](presentation.pdf) · [IYP queries](queries/) · [IYP paper](https://doi.org/10.1145/3646547.3688444) · [IYP repository and dataset credits](https://github.com/InternetHealthReport/internet-yellow-pages/blob/main/ACKNOWLEDGMENTS.md)
+Giga / EdTech Hub supplied the education platform inventory. We queried IYP for OpenINTEL DNS records, IPinfo and AWS location data, and bgp.tools and LACeS anycast evidence. OONI Web Connectivity supplied existing observations from domestic networks.
 
 The research leading to these results was made possible by OpenINTEL (https://www.openintel.nl/), a joint project of the University of Twente, SIDN, NLnet Labs and SURF.
 
-Project idea from ISOC Pulse. Project contributor: Zuyao Xu, Nankai University ([@TochusC](https://github.com/TochusC)).
+## Project idea
+
+Based on the ISOC Pulse project idea *How Self-Reliant Is a Country’s Internet?*
+
+## Status and next steps
+
+The analysis of existing measurements is complete. The next step is to test whether domestic resolvers can refresh expired DNS records and whether students can complete a learning activity during an international connectivity disruption.
+
+## Links
+
+- [Code: IYP queries](queries/)
+- [Presentation and dataset credits (PDF)](presentation.pdf)
